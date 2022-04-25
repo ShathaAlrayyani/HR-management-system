@@ -1,34 +1,67 @@
 `use strict`;
 
+let allEmployees =[];
 let form = document.getElementById("form");
 
-let allEmployees =[];
-
-
-function employee (employeeId,fullName ,department ,level,imageUrl){
-    this.employeeId= employeeId;
+function employee (fullName ,department ,level,imageUrl){
+    this.employeeId= this.getId();
     this.fullName = fullName;
     this.department = department;
     this.level = level;
     this.image = imageUrl;
-   
-    allEmployees.push(this)
+    this.salary= this.getSalary ();
+    allEmployees.push(this);
 
 }
 
+employee.prototype.getSalary = function () {
+    let salary = 0;
+    switch(this.level){
+        case "junior":
+           salary = Math.floor(Math.random() * (1000 - 500) ) + 500;
+            break;
+        case "mid-senior" :
+            salary = Math.floor(Math.random() * (1500 - 1000) ) + 1000;
+            break;
+        case "senior" :
+            salary = Math.floor(Math.random() * (2000 - 1500) ) + 1500;
+            break;
+    }
+    return salary;
 
+  }
+let id = 999;
+employee.prototype.getId = function (){
+    id++ ;
+    return id;
+
+}
+
+employee.prototype.render = function(){
+    document.write(`<p> ${this.fullName} ${this.salary}</p>`)
+}
 
  
-let ghazi = new employee(1000,"Ghazi Samer","Administration","Senior",".\img\man.webp");
-let lana = new employee (1001,"lana Ali","Finance","Senior",".\img\woman.jpg");
-let tamara = new employee (1002,"Tamara Ayoub","Marketing","Senior","./img/woman.jpg");
-let safi = new employee(1003,"Safi Walid","Administration","Mid-Senior","./img/woman.jpg");
-let omar = new employee (1004,"Omar Zaid","Development","Senior", ".\img\man.webp");
-let rana = new employee (1005,"Rana Saleh","Development","Jonior",".\img\woman.jpg");
-let hadi = new employee ( 1006, "Hadi Ahmad","Finance","Mid-Senior",".\img\man.webp");
+let ghazi = new employee("Ghazi Samer","Administration","senior",".\img\man.webp");
+let lana = new employee ("lana Ali","Finance","senior",".\img\woman.jpg");
+let tamara = new employee ("Tamara Ayoub","Marketing","senior","./img/woman.jpg");
+let safi = new employee("Safi Walid","Administration","mid-senior","./img/woman.jpg");
+let omar = new employee ("Omar Zaid","Development","senior", ".\img\man.webp");
+let rana = new employee ("Rana Saleh","Development","junior",".\img\woman.jpg");
+let hadi = new employee ("Hadi Ahmad","Finance","mid-senior",".\img\man.webp");
 
 
-console.log(allEmployees);
+ghazi.render();
+lana.render();
+tamara.render();
+safi.render();
+omar.render();
+rana.render();
+hadi.render();
+
+
+
+
 
 form.addEventListener('submit',saveData);
 
@@ -40,22 +73,8 @@ function saveData (event) {
     let department = event.target.department.value ; 
     let level = event.target.level.value;
     console.log(name , image , department , level);
-    let employeeId = function employeeId15(){
-        let employeeId = [];
-        for (let i=0; i < name.length;i++){
-           employeeId = Math.floor(1000 + Math.random() * 9000);
-           employeeId.push({employeeId});
-        }
-        return employeeId;
-    }
 
-    newEmployee = new employee (employeeId,name,department,level,image);
-    console.log(newEmployee);
+    newEmployee = new employee (name,department,level,image);
+
 }
-
-
-
-
-
-
-
+console.log(allEmployees);

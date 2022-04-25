@@ -33,3 +33,30 @@ omar.render();
 rana.render();
 hadi.render();
 
+
+
+
+form.addEventListener('submit',saveData);
+
+function saveData (event) {
+    event.preventDefault();
+    console.log(event.target.fname.value);
+    let name = event.target.fname.value;
+    let image = event.target.img.value;
+    let department = event.target.department.value ; 
+    let level = event.target.level.value;
+    console.log(name , image , department , level);
+    let employeeId = function employeeId15(){
+        let employeeId = [];
+        for (let i=0; i < name.length;i++){
+           employeeId = Math.floor(1000 + Math.random() * 9000);
+           employeeId.push({employeeId});
+        }
+        return employeeId;
+    }
+
+    newEmployee = new employee (employeeId,name,department,level,image);
+    console.log(newEmployee);
+}
+
+
