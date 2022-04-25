@@ -1,0 +1,35 @@
+
+employee.prototype.getSalary = function () {
+     let salary = 0;
+    switch(this.level){
+        case "Jonior":
+           salary = Math.floor(Math.random() * (1000 - 500) ) + 500;
+            break;
+        case "Mid-Senior" :
+            salary = Math.floor(Math.random() * (1500 - 1000) ) + 1000;
+            break;
+        case "Senior" :
+            salary = Math.floor(Math.random() * (2000 - 1500) ) + 1500;
+            break;
+    }
+    return salary;
+
+  }
+
+
+   let salary= getSalary();
+   let netSalary = salary * 0.925 ;
+
+employee.prototype.render = function(){
+    document.write(`<p> ${this.fullName} ${salary}</p>`)
+}
+
+
+ghazi.render();
+lana.render();
+tamara.render();
+safi.render();
+omar.render();
+rana.render();
+hadi.render();
+

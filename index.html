@@ -30,7 +30,55 @@
 
     </header>
 
+    <form id = "form"> 
+        <label for="fname">Full Name:</label><br>
+        <input type="text" id="fname" name="fname" required>
+        <br><br>
+        <label for="img">Image:</label><br>
+        <input type="text" id="img" name="img"><br>
+        <br><br>
+        <label for="department">Department:</label><br>
+        <select name="department" id="department">
+           <option value="choose1">Choose a department</option>
+           <option value="administration">Administration</option>
+           <option value="marketing">Marketing</option>
+           <option value="development">Development</option>
+           <option value="finance">Finance</option>
+        </select>
+       <br><br>
+        <label for="level">Level :</label> <br>
+          <select name="level" id="level">
+               <option value="choose2">Choose a level </option>
+               <option value="junior">Junior</option>
+               <option value="mid-senior">Mid-Senior</option>
+               <option value="senior">Senior</option>
+          </select>
+          <br><br>
+          <input type="submit" value="Submit">
+          <br><br>
+      </form>
+
+
     <script src="./app.js"></script>
+
+
+
+
+    <footer class ="footer">
+
+        <p class="text"> 
+            &copy;2022 Shatha Alrayyani
+        </p>
+        
+        <div>
+            <div class="icons" id="fb-btn" ><i class="fa-brands fa-facebook"></i> </div>
+            <div class="icons" id="tw-btn" ><i class="fa-solid fa-twitter-square"></i> </div>
+            <div class="icons" id="lin-btn"><i class="fa-brands fa-linkedin"></i> </div>
+            </div>
+
+        
+        
+    </footer>
     
 </body>
 </html>

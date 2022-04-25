@@ -1,5 +1,7 @@
 `use strict`;
 
+let form = document.getElementById("form");
+
 let allEmployees =[];
 
 
@@ -9,35 +11,12 @@ function employee (employeeId,fullName ,department ,level,imageUrl){
     this.department = department;
     this.level = level;
     this.image = imageUrl;
-    this.salary= this.getSalary ();
-    this.netSalary = this.salary * 0.925 ;
+   
     allEmployees.push(this)
 
 }
 
 
-
-employee.prototype.getSalary = function () {
-    let salary = 0;
-    switch(this.level){
-        case "Jonior":
-           salary = Math.floor(Math.random() * (1000 - 500) ) + 500;
-            break;
-        case "Mid-Senior" :
-            salary = Math.floor(Math.random() * (1500 - 1000) ) + 1000;
-            break;
-        case "Senior" :
-            salary = Math.floor(Math.random() * (2000 - 1500) ) + 1500;
-            break;
-    }
-    return salary;
-
-  }
-
-
-employee.prototype.render = function(){
-    document.write(`<p> ${this.fullName} ${this.salary}</p>`)
-}
 
  
 let ghazi = new employee(1000,"Ghazi Samer","Administration","Senior",".\img\man.webp");
@@ -49,12 +28,34 @@ let rana = new employee (1005,"Rana Saleh","Development","Jonior",".\img\woman.j
 let hadi = new employee ( 1006, "Hadi Ahmad","Finance","Mid-Senior",".\img\man.webp");
 
 
-ghazi.render();
-lana.render();
-tamara.render();
-safi.render();
-omar.render();
-rana.render();
-hadi.render();
-
 console.log(allEmployees);
+
+form.addEventListener('submit',saveData);
+
+function saveData (event) {
+    event.preventDefault();
+    console.log(event.target.fname.value);
+    let name = event.target.fname.value;
+    let image = event.target.img.value;
+    let department = event.target.department.value ; 
+    let level = event.target.level.value;
+    console.log(name , image , department , level);
+    let employeeId = function employeeId15(){
+        let employeeId = [];
+        for (let i=0; i < name.length;i++){
+           employeeId = Math.floor(1000 + Math.random() * 9000);
+           employeeId.push({employeeId});
+        }
+        return employeeId;
+    }
+
+    newEmployee = new employee (employeeId,name,department,level,image);
+    console.log(newEmployee);
+}
+
+
+
+
+
+
+
