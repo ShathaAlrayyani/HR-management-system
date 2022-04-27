@@ -2,10 +2,10 @@
 
 :root {
 
-    --header: #f7f7f7;
-    --bg: #faf7f1;
-    --black: #424242;
-    --border: 0.1rem solid rgba(255,255,255,.3);
+    --header: #483434;
+    --bg: #EED6C4;
+    --black: #6B4F4F;
+    --border: 0.1rem solid #FFF3E4;
     --white: #fff;
     
 }
@@ -32,7 +32,7 @@ html{
  body{
 
     background: var(--bg);
-    color: var(--black);
+    color: #FFF3E4;
  }
 
 
@@ -57,6 +57,10 @@ html{
  .btn{
    margin-left: 1rem;
    font-size: 1.6rem;
+   color: #EED6C4;
+}
+img{
+   width: 150px;
 }
 
 .icons{
@@ -79,5 +83,12 @@ html{
    justify-content: space-between;
    align-items: center;
    position:relative;
+
+}
+.container {
+
+ background-color: #483434;
+ padding: 1rem;
+ margin: 1.5rem;
 
 }
