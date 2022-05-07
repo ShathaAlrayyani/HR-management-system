@@ -1,5 +1,6 @@
 `use strict`
 
+
 let allEmployees =[];
 let form = document.getElementById("form");
 let card = document.getElementById("div");
@@ -83,6 +84,7 @@ let hadi = new employee ("Hadi Ahmad","Finance","mid-senior","./task/Hadi.jpg");
 
 function renderAll (){
     for (let i = 0 ;i<allEmployees.length;i++){
+
         allEmployees[i].render();
     }
 
@@ -106,16 +108,52 @@ function saveData(event){
     console.log(name , image , department , level);
 
     newEmployee = new employee (name,department,level,image);
+    newEmployee.render();
+    saveLocal(allEmployees);
+
+}
+
+//save to local storage:
+function saveLocal(data){
+    let stringObj= JSON.stringify(data)
+    localStorage.setItem("employee",stringObj);
+}
+
+// get the data from local storage 
+function getData (){
+    let gittingData =localStorage.getItem("employee");
+    console.log(gittingData);
+    // convert the data to its original type not a string
+    let originalData = JSON.parse(gittingData);
+    console.log(originalData);
+
+    if (originalData!= null){
+        for(let i=0 ; i < originalData.length ; i++){
+       var element = new employee(
+           originalData[i].department ,
+           originalData[i].employeeId ,
+           originalData[i].fullName ,
+           originalData[i].image ,
+           originalData[i].level,
+           originalData[i].salary); 
+       }      
+    }
+
+    element.render();
 
 }
 
 
-//saveData();
 renderAll();
 console.log(allEmployees);
+getData();
+
+
 
 // styling :
 body.style.backgroundColor = "#EED6C4" ;
+
+//style the form :
 form.style.backgroundColor = "#6B4F4F" ;
 form.style.width = "300px";
 form.style.padding = '16px';
@@ -124,20 +162,13 @@ form.style.borderColor = "#EED6C4";
 form.style.borderBlock = "12px";
 
 
-
 card.style.margin
 card.style.textAlign = "center";
 card.style.borderImageWidth = "15px";
-//card.style.alignContent = "center";
+
 card.style.padding = "15px";
 card.style.fontSize = "11px"
 card.style.marginBlock = "22px";
 card.style.display ="flex";
 card.style.flexWrap = "wrap";
-//card.style.columnGap = "4rem";
 card.style.justifyContent = "space-evenly";
-
-
-
-
-
